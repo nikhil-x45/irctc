@@ -9,7 +9,9 @@ exports.addTrain = async (req, res) => {
         
         const { train_name, source_station, destination_station, 
                 total_seats, departure_time, arrival_time } = req.body;
-        
+        // we must validate everything coming from request body
+        // as malformed input could affect data integrity
+        // leaving it for now due to time constraints 
         const trainResult = await client.query(
             `INSERT INTO trains (train_name, source_station, destination_station, 
                                total_seats, departure_time, arrival_time)
